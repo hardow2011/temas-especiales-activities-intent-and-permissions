@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.activities_intent_and_permissions">
+    <permission android:name="android.permissions.FINE_LOCATION"/>
+    <permission android:name="android.permissions.CAMERA"/>
 
     <application
         android:allowBackup="true"
