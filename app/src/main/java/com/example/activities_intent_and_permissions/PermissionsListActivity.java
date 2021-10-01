@@ -4,12 +4,14 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
@@ -74,6 +76,23 @@ public class PermissionsListActivity extends AppCompatActivity {
                     return;
                 }
                 Toast.makeText(PermissionsListActivity.this, "You need location permissions", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        findViewById(R.id.cameraButton).setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.R)
+            @Override
+            public void onClick(View v) {
+                if (checkPermission(cameraPermission)) {
+                    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    try {
+                        startActivity(takePictureIntent);
+                    } catch (ActivityNotFoundException e) {
+                        // display error state to the user
+                    }
+                    return;
+                }
+                Toast.makeText(PermissionsListActivity.this, "You need camera permissions", Toast.LENGTH_LONG).show();
             }
         });
 
