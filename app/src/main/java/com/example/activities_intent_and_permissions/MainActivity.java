@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class MainActivity extends AppCompatActivity implements  View.OnClickListener {
 
     private Switch storageSwitch;
     private Switch locationSwitch;
@@ -53,6 +53,12 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
         final String[] perms = {"android.permissions.FINE_LOCATION, android.permissions.CAMERA"};
 
+        storageSwitch.setOnClickListener(this);
+        locationSwitch.setOnClickListener(this);
+        cameraSwitch.setOnClickListener(this);
+        phoneSwitch.setOnClickListener(this);
+        contactsSwitch.setOnClickListener(this);
+
     }
 
     private void checkAndrequestPermissions(List<String> permissionList) {
@@ -74,72 +80,65 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
     }
 
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         super.onResume();
         checkForGrantedPermissions();
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
-            // do something when check is selected
-        } else {
-            //do something when unchecked
-        }
+    public void onClick(View v) {
+//        Toast.makeText(MainActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
+        // do something when the corky3 is clicked
     }
 
-    private void checkForGrantedPermissions() {
+
+
+        private void checkForGrantedPermissions () {
         int storagePermission = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
         int locationPermission = ContextCompat.checkSelfPermission(getApplicationContext(), ACCESS_FINE_LOCATION);
         int cameraPermission = ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA);
         int phonePermission = ContextCompat.checkSelfPermission(getApplicationContext(), CALL_PHONE);
         int contactsPermission = ContextCompat.checkSelfPermission(getApplicationContext(), READ_CONTACTS);
 
-        if(storagePermission == PackageManager.PERMISSION_GRANTED) {
+        if (storagePermission == PackageManager.PERMISSION_GRANTED) {
             storageSwitch.setChecked(true);
-            storageSwitch.setEnabled(false);
-        }
-        else {
+            storageSwitch.setClickable(false);
+        } else {
             storageSwitch.setChecked(false);
-            storageSwitch.setEnabled(true);
+            storageSwitch.setClickable(true);
         }
 
-        if(locationPermission == PackageManager.PERMISSION_GRANTED) {
+        if (locationPermission == PackageManager.PERMISSION_GRANTED) {
             locationSwitch.setChecked(true);
-            locationSwitch.setEnabled(false);
-        }
-        else {
+            locationSwitch.setClickable(false);
+        } else {
             locationSwitch.setChecked(false);
-            locationSwitch.setEnabled(true);
+            locationSwitch.setClickable(true);
         }
 
 
-        if(cameraPermission == PackageManager.PERMISSION_GRANTED) {
+        if (cameraPermission == PackageManager.PERMISSION_GRANTED) {
             cameraSwitch.setChecked(true);
-            cameraSwitch.setEnabled(false);
-        }
-        else {
+            cameraSwitch.setClickable(false);
+        } else {
             cameraSwitch.setChecked(false);
-            cameraSwitch.setEnabled(true);
+            cameraSwitch.setClickable(true);
         }
 
-        if(phonePermission == PackageManager.PERMISSION_GRANTED) {
+        if (phonePermission == PackageManager.PERMISSION_GRANTED) {
             phoneSwitch.setChecked(true);
-            phoneSwitch.setEnabled(false);
-        }
-        else {
+            phoneSwitch.setClickable(false);
+        } else {
             phoneSwitch.setChecked(false);
-            phoneSwitch.setEnabled(true);
+            phoneSwitch.setClickable(true);
         }
 
-        if(contactsPermission == PackageManager.PERMISSION_GRANTED) {
+        if (contactsPermission == PackageManager.PERMISSION_GRANTED) {
             contactsSwitch.setChecked(true);
-            contactsSwitch.setEnabled(false);
-        }
-        else {
+            contactsSwitch.setClickable(false);
+        } else {
             contactsSwitch.setChecked(false);
-            contactsSwitch.setEnabled(true);
+            contactsSwitch.setClickable(true);
         }
 
     }
@@ -158,8 +157,8 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 //        System.out.println("////////////////////////////////////////////////////");
 //    }
 
-    public void sendInfo(View v) {
-        List<String > permissionList = new ArrayList<>();
+        public void sendInfo (View v){
+        List<String> permissionList = new ArrayList<>();
         if (storageSwitch.isChecked()) {
             permissionList.add(READ_EXTERNAL_STORAGE);
         }
@@ -176,10 +175,9 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
             permissionList.add(READ_CONTACTS);
         }
 
-        if(permissionList.size() > 0) {
+        if (permissionList.size() > 0) {
             checkAndrequestPermissions(permissionList);
-        }
-        else {
+        } else {
             Intent intent = new Intent(this, PermissionsListActivity.class);
             startActivity(intent);
         }
@@ -187,4 +185,4 @@ public class MainActivity extends AppCompatActivity implements CompoundButton.On
 
     }
 
-}
+    }

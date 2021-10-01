@@ -61,7 +61,7 @@ public class PermissionsListActivity extends AppCompatActivity {
                     startActivity(intent);
                     return;
                 }
-                Toast.makeText(PermissionsListActivity.this, "You need storage permissions", Toast.LENGTH_LONG).show();
+                Toast.makeText(PermissionsListActivity.this, "You need storage permissions", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -76,7 +76,7 @@ public class PermissionsListActivity extends AppCompatActivity {
                     startActivity(intent);
                     return;
                 }
-                Toast.makeText(PermissionsListActivity.this, "You need location permissions", Toast.LENGTH_LONG).show();
+                Toast.makeText(PermissionsListActivity.this, "You need location permissions", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -93,7 +93,7 @@ public class PermissionsListActivity extends AppCompatActivity {
                     }
                     return;
                 }
-                Toast.makeText(PermissionsListActivity.this, "You need camera permissions", Toast.LENGTH_LONG).show();
+                Toast.makeText(PermissionsListActivity.this, "You need camera permissions", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -107,7 +107,7 @@ public class PermissionsListActivity extends AppCompatActivity {
                     startActivity(intent);
                     return;
                 }
-                Toast.makeText(PermissionsListActivity.this, "You need phone permissions", Toast.LENGTH_LONG).show();
+                Toast.makeText(PermissionsListActivity.this, "You need phone permissions", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -121,7 +121,7 @@ public class PermissionsListActivity extends AppCompatActivity {
                     startActivity(intent);
                     return;
                 }
-                Toast.makeText(PermissionsListActivity.this, "You need contact permissions", Toast.LENGTH_LONG).show();
+                Toast.makeText(PermissionsListActivity.this, "You need contact permissions", Toast.LENGTH_SHORT).show();
             }
         });
 
