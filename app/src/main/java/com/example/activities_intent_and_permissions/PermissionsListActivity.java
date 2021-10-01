@@ -62,11 +62,27 @@ public class PermissionsListActivity extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.locationButton).setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.R)
+            @Override
+            public void onClick(View v) {
+                if (checkPermission(locationPermission)) {
+
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse("http://maps.google.com/maps?saddr=20.344,34.34&daddr=20.5666,45.345"));
+                    startActivity(intent);
+                    return;
+                }
+                Toast.makeText(PermissionsListActivity.this, "You need location permissions", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
 
     }
 
     public boolean checkPermission(int permission) {
-        if (storagePermission == PackageManager.PERMISSION_GRANTED) {
+        if (permission == PackageManager.PERMISSION_GRANTED) {
             return true;
         }
         return false;
