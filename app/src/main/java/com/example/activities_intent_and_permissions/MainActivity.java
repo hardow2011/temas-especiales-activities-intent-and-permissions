@@ -72,19 +72,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    @Override
-//    protected void onResume()
-//    {
-//        super.onResume();
-//        System.out.println("////////////////////////////////////////////////////");
-//        System.out.println("////////////////////////////////////////////////////");
-//        System.out.println("////////////////////////////////////////////////////");
-//        System.out.println("////////////////////////////////////////////////////");
-//        System.out.println("////////////////////////////////////////////////////");
-//        System.out.println("////////////////////////////////////////////////////");
-//        System.out.println("////////////////////////////////////////////////////");
-//        System.out.println("////////////////////////////////////////////////////");
-//    }
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        checkForGrantedPermissions();
+    }
 
     private void checkForGrantedPermissions() {
         int storagePermission = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
@@ -101,6 +94,44 @@ public class MainActivity extends AppCompatActivity {
             storageSwitch.setChecked(false);
             storageSwitch.setEnabled(true);
         }
+
+        if(locationPermission == PackageManager.PERMISSION_GRANTED) {
+            locationSwitch.setChecked(true);
+            locationSwitch.setEnabled(false);
+        }
+        else {
+            locationSwitch.setChecked(false);
+            locationSwitch.setEnabled(true);
+        }
+
+
+        if(cameraPermission == PackageManager.PERMISSION_GRANTED) {
+            cameraSwitch.setChecked(true);
+            cameraSwitch.setEnabled(false);
+        }
+        else {
+            cameraSwitch.setChecked(false);
+            cameraSwitch.setEnabled(true);
+        }
+
+        if(phonePermission == PackageManager.PERMISSION_GRANTED) {
+            phoneSwitch.setChecked(true);
+            phoneSwitch.setEnabled(false);
+        }
+        else {
+            phoneSwitch.setChecked(false);
+            phoneSwitch.setEnabled(true);
+        }
+
+        if(contactsPermission == PackageManager.PERMISSION_GRANTED) {
+            contactsSwitch.setChecked(true);
+            contactsSwitch.setEnabled(false);
+        }
+        else {
+            contactsSwitch.setChecked(false);
+            contactsSwitch.setEnabled(true);
+        }
+
     }
 
 //    @Override
