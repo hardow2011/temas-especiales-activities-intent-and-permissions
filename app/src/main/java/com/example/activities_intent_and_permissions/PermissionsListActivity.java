@@ -97,6 +97,20 @@ public class PermissionsListActivity extends AppCompatActivity {
         });
 
 
+        findViewById(R.id.phoneButton).setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.R)
+            @Override
+            public void onClick(View v) {
+                if (checkPermission(phonePermission)) {
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "8098098009"));
+                    startActivity(intent);
+                    return;
+                }
+                Toast.makeText(PermissionsListActivity.this, "You need phone permissions", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
 
     }
 
