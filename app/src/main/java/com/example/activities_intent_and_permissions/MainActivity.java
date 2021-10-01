@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements  View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Switch storageSwitch;
     private Switch locationSwitch;
@@ -92,8 +92,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     }
 
 
-
-        private void checkForGrantedPermissions () {
+    private void checkForGrantedPermissions() {
         int storagePermission = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
         int locationPermission = ContextCompat.checkSelfPermission(getApplicationContext(), ACCESS_FINE_LOCATION);
         int cameraPermission = ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA);
@@ -157,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 //        System.out.println("////////////////////////////////////////////////////");
 //    }
 
-        public void sendInfo (View v){
+    public void sendInfo(View v) {
         List<String> permissionList = new ArrayList<>();
         if (storageSwitch.isChecked()) {
             permissionList.add(READ_EXTERNAL_STORAGE);
@@ -185,4 +184,8 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
     }
 
+    public void closeApp(View view) {
+        finish();
+        System.exit(0);
     }
+}

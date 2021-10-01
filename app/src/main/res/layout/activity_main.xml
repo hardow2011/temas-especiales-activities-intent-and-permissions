@@ -173,5 +173,6 @@
         android:layout_marginBottom="16dp"
         android:text="Cancel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/continueBtn" />
+        app:layout_constraintEnd_toStartOf="@+id/continueBtn"
+        android:onClick="closeApp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
