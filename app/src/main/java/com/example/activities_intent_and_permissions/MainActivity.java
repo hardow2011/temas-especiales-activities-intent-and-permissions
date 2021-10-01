@@ -169,6 +169,10 @@ public class MainActivity extends AppCompatActivity {
         if(permissionList.size() > 0) {
             checkAndrequestPermissions(permissionList);
         }
+        else {
+            Intent intent = new Intent(this, PermissionsListActivity.class);
+            startActivity(intent);
+        }
 
 
     }
