@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -107,6 +108,20 @@ public class PermissionsListActivity extends AppCompatActivity {
                     return;
                 }
                 Toast.makeText(PermissionsListActivity.this, "You need phone permissions", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        findViewById(R.id.contactsButton).setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.R)
+            @Override
+            public void onClick(View v) {
+                if (checkPermission(contactsPermission)) {
+                    Intent intent = new Intent(Intent.ACTION_PICK);
+                    intent.setType(ContactsContract.Contacts.CONTENT_TYPE);
+                    startActivity(intent);
+                    return;
+                }
+                Toast.makeText(PermissionsListActivity.this, "You need contact permissions", Toast.LENGTH_LONG).show();
             }
         });
 
